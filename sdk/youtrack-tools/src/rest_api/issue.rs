@@ -1,14 +1,16 @@
-use serde::{Serialize, Deserialize};
-use async_trait::async_trait;
-use crate::rest_api::base::{BaseInfo, ops::BaseOps, NameType, Ideantifier};
-use crate::rest_api::base::wrap::ActiveRecordWrap;
-use crate::rest_api::json_models::issue::{IssueDto, IssueTagDto};
-use crate::rest_api::service::issues::{persist_changes, fetch_issue_by_id};
 use std::ops::{Deref, DerefMut};
 use std::sync::Arc;
+
+use async_trait::async_trait;
+use serde::{Deserialize, Serialize};
+
+use crate::rest_api::base::{BaseInfo, Ideantifier, NameType, ops::BaseOps};
+use crate::rest_api::base::wrap::ActiveRecordWrap;
+use crate::rest_api::json_models::issue::{IssueDto, IssueTagDto};
 use crate::rest_api::json_models::issue::field::custom_field::{IssueCustomField, IssueStatus, StateIssueCustomField};
-use crate::rest_api::json_models::issue::field::value::{FieldValue, StateBundleElement};
 use crate::rest_api::json_models::issue::field::IssueStateType;
+use crate::rest_api::json_models::issue::field::value::{FieldValue, StateBundleElement};
+use crate::rest_api::service::issues::{fetch_issue_by_id, persist_changes};
 
 pub type Issue = ActiveRecordWrap<IssueDto>;
 
@@ -57,7 +59,7 @@ impl BaseInfo for Issue {
 impl BaseOps for Issue {
     async fn update(&mut self) -> &mut Self {
         fetch_issue_by_id(&self.http_client, self.origin.id.clone()).await
-            .map(|new_origin|self.refresh(new_origin));
+            .map(|new_origin| self.refresh(new_origin));
         self
     }
 
@@ -104,5 +106,30 @@ impl Issue {
     }
     pub fn set_state(&mut self, state_type: IssueStateType) {
         self.set_state_name(state_type)
+    }
+}
+
+pub mod search {
+    #[derive(Clone)]
+    pub enum IssueSearchParam {
+        State(String),
+        IssueId(String),
+        ProjectName(String),
+        TagTitle(String),
+    }
+
+    impl From<IssueSearchParam> for String {
+        fn from(param: IssueSearchParam) -> Self {
+            match param {
+                // State: {Wait for merge}
+                IssueSearchParam::State(state_name) => format!("State: {{{}}}", state_name),
+                // issue id: PMS-2750
+                IssueSearchParam::IssueId(issue_id) => format!("issue id: {{{}}}", issue_id),
+                // project: {Paymash Server}
+                IssueSearchParam::ProjectName(project_name) => format!("project: {{{}}}", project_name),
+                // tag: Star
+                IssueSearchParam::TagTitle(tag_title) => format!("tag: {}", tag_title)
+            }
+        }
     }
 }

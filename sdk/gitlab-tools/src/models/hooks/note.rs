@@ -1,7 +1,7 @@
 use serde::{Serialize, Deserialize};
 use crate::models::hooks::base::{Project, LastCommit, Repository, User, Identifier};
 
-#[derive(Deserialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Debug, Clone, PartialEq, Serialize)]
 pub struct NoteObjectAttributes {
     pub id: Identifier,
     pub note: String,
@@ -19,7 +19,7 @@ pub struct NoteObjectAttributes {
     pub url: String,
 }
 
-#[derive(Deserialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Debug, Clone, PartialEq, Serialize)]
 pub struct MergeRequest {
     pub id: Identifier,
     pub target_branch: String,
@@ -53,7 +53,7 @@ pub struct MergeRequest {
     pub assignee_ids: Vec<::serde_json::Value>,
 }
 
-#[derive(Deserialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Debug, Clone, PartialEq, Serialize)]
 pub struct NoteHook {
     pub user: User,
     pub project_id: Identifier,

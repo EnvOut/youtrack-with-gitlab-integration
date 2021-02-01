@@ -3,8 +3,6 @@ use tokio::sync::Mutex;
 use hyper::{Client, Uri, Response, Body, Method};
 use hyper::client::{HttpConnector, ResponseFuture};
 use std::ops::Deref;
-use serde::export::fmt::Debug;
-use serde::export::Formatter;
 use std::fmt;
 use std::time::Instant;
 use crate::rest_api::client::Config;
@@ -90,8 +88,8 @@ impl Deref for HttpClient {
     }
 }
 
-impl Debug for HttpClient {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+impl std::fmt::Debug for HttpClient {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> fmt::Result {
         f.debug_struct("HttpClient")
             .field("hyper", &self.inner)
             .field("created at", &self.created_at)

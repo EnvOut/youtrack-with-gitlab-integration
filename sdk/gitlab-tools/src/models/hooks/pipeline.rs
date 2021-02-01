@@ -1,7 +1,7 @@
 use serde::{Serialize, Deserialize};
 use crate::models::hooks::base::{LastCommit, User, Identifier, VisibilityLevel};
 
-#[derive(Deserialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Debug, Clone, PartialEq, Serialize)]
 pub struct PipelineObjectAttributes {
     pub id: Identifier,
     pub ref_field: Option<String>,
@@ -17,13 +17,13 @@ pub struct PipelineObjectAttributes {
     pub variables: Vec<Variable>,
 }
 
-#[derive(Deserialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Debug, Clone, PartialEq, Serialize)]
 pub struct Variable {
     pub key: String,
     pub value: String,
 }
 
-#[derive(Deserialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Debug, Clone, PartialEq, Serialize)]
 pub struct PipelineMergeRequest {
     pub id: Identifier,
     pub iid: Identifier,
@@ -37,7 +37,7 @@ pub struct PipelineMergeRequest {
     pub url: String,
 }
 
-#[derive(Deserialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Debug, Clone, PartialEq, Serialize)]
 pub struct PipelineProject {
     pub id: Identifier,
     pub name: String,
@@ -52,7 +52,7 @@ pub struct PipelineProject {
     pub default_branch: String,
 }
 
-#[derive(Deserialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Debug, Clone, PartialEq, Serialize)]
 pub struct Build {
     pub id: Identifier,
     pub stage: String,
@@ -69,7 +69,7 @@ pub struct Build {
     pub artifacts_file: ArtifactsFile,
 }
 
-#[derive(Deserialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Debug, Clone, PartialEq, Serialize)]
 pub struct Runner {
     pub id: Identifier,
     pub description: String,
@@ -77,13 +77,13 @@ pub struct Runner {
     pub is_shared: bool,
 }
 
-#[derive(Deserialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Debug, Clone, PartialEq, Serialize)]
 pub struct ArtifactsFile {
     pub filename: Option<String>,
     pub size: Option<String>,
 }
 
-#[derive(Deserialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Debug, Clone, PartialEq, Serialize)]
 pub struct PipelineHook {
     // pub object_kind: String,
     pub object_attributes: PipelineObjectAttributes,

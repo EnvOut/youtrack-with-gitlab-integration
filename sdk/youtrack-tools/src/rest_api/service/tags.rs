@@ -35,8 +35,9 @@ pub mod fetch {
             _ if status_code.is_success() => hyper::body::to_bytes(body).await
                 .map_err(|e| YoutrackError::HttpError(e))
                 .and_then(|bytes| {
-                    log::trace!("fetched issue with body: {}", String::from_utf8_lossy(bytes.bytes()));
-                    serde_json::from_slice::<Vec<IssueTagDto>>(&bytes).map_err(|e| YoutrackError::ConverterError(e))
+                    let body_str = String::from_utf8(bytes.to_vec()).unwrap();
+                    log::trace!("fetched issue with body: {}", &body_str);
+                    serde_json::from_str::<Vec<IssueTagDto>>(body_str.as_str()).map_err(|e| YoutrackError::ConverterError(e))
                 }),
             status => Err(YoutrackError::empty_list()),
         };
@@ -75,13 +76,14 @@ pub async fn persist_changes(client: &HttpClient, origin_dto: Arc<IssueTagDto>, 
 
         tag_dto = match status_code.as_u16() {
             _ if status_code.is_success() => body_bytes_res.and_then(|bytes| {
-                log::trace!("fetched issue with body: {}", String::from_utf8_lossy(bytes.bytes()));
-                serde_json::from_slice::<IssueTagDto>(&bytes).map_err(|e| YoutrackError::ConverterError(e))
+                let body_str = String::from_utf8(bytes.to_vec()).unwrap();
+                log::trace!("fetched issue with body: {}", &body_str);
+                serde_json::from_str::<IssueTagDto>(&body_str).map_err(|e| YoutrackError::ConverterError(e))
             }),
             400u16 =>{
                 let body = body_bytes_res
                     .as_ref()
-                    .map(|bytes| String::from_utf8_lossy(bytes.bytes()).to_string())
+                    .map(|bytes| String::from_utf8(bytes.to_vec()).unwrap())
                     .unwrap_or("".to_string());
                 let error = YoutrackError::RestError(RestError::Conflict(body));
                 Err(error)
@@ -89,7 +91,7 @@ pub async fn persist_changes(client: &HttpClient, origin_dto: Arc<IssueTagDto>, 
             status => {
                 let body = body_bytes_res
                     .as_ref()
-                    .map(|bytes| String::from_utf8_lossy(bytes.bytes()).to_string())
+                    .map(|bytes| String::from_utf8(bytes.to_vec()).unwrap())
                     .unwrap_or("".to_string());
                 let message = format!(r###"Can't update tag, status "{status}", path: "{path}", body: "{body}""###, status = status, path = path, body = body);
                 let error = YoutrackError::rest_error(status, message);

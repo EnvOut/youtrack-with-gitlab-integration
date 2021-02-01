@@ -13,7 +13,7 @@ edition = "2018"
 git-utils = { path = "../utils/git-utils" }
 env-utils = { path = "../utils/env-utils" }
 
-hyper = "*"
+hyper = { version = "0.14", features = ["full"] }
 tokio = "*"
 async-trait = "0.1.42"
 

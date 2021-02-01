@@ -14,16 +14,22 @@ use std::collections::HashMap;
 use crate::service::grok_service::GrokService;
 use gitlab_tools::models::hooks::note::NoteHook;
 use crate::settings;
+use crate::service::definitions::events::GitlabEvent;
+use crate::service::definitions::events::Events;
+use crate::service::operation_service::OperationService;
+use crate::service::definitions::args::Argument;
 
-/// This implementation doesn't support grok patterns
+#[derive(new)]
 pub struct SimpleWebhookService {
     youtrack_service: Service<YoutrackService>,
     builder_service: Service<PatternService>,
     grok_service: Service<GrokService>,
+    operation_service: Service<OperationService>,
 }
 
 // #[derive(Debug, Snafu)]
 #[derive(Debug)]
+// #[derive(Debug, new)]
 pub enum SimpleWebhookServiceError {
     // #[snafu(display("Note hook not yet implemented"))]
     NoteHookNotImplemented,
@@ -43,11 +49,6 @@ lazy_static! {
 }
 
 impl SimpleWebhookService {
-    pub fn new(youtrack_service: Service<YoutrackService>, builder_service: Service<PatternService>,
-               grok_service: Service<GrokService>) -> SimpleWebhookService {
-        SimpleWebhookService { youtrack_service, builder_service, grok_service }
-    }
-
     pub async fn process_web_hook(&mut self, webhook: GitlabHookRequest) -> Result<(), SimpleWebhookServiceError> {
         let result = match webhook {
             GitlabHookRequest::MergeRequest(merge_request_hook) => {
@@ -69,17 +70,24 @@ impl SimpleWebhookService {
         if let Some(task_id) = self.get_task_id(merge_request_title).await {
             let mut service = self.youtrack_service.write().await;
             let project_id = settings::get_str("youtrack.project_id").unwrap();
-            let tag_definition = settings::get_label_definition("youtrack.labels.on-comment").unwrap();
-            service.add_configured_tag(project_id, task_id, tag_definition).await;
+            if let Ok(events_value) = settings::get("app.events") {
+                let events = Events::from(events_value);
+
+                let on_comment_events = events.get_on_comment();
+
+                let operation_service = self.operation_service.write().await;
+                operation_service.call_operations(on_comment_events, Argument::NoteHookArgs(note_hook)).await;
+                println!("events");
+            }
         }
     }
 
     pub async fn process_merge_request_hook(&mut self, merge_request_hook: MergeRequestHook) {
         let merge_request_action = merge_request_hook.object_attributes.action;
         let task_id = self.get_task_id(merge_request_hook.object_attributes.title).await;
-        let state = merge_request_hook.object_attributes.state;
+        let mr_state = merge_request_hook.object_attributes.state;
 
-        if let (Some(MergeRequestAction::Merge), Some(task_id), MergeRequestState::Merged) = (merge_request_action, task_id, state) {
+        if let (Some(MergeRequestAction::Merge), Some(task_id), MergeRequestState::Merged) = (merge_request_action, task_id, mr_state) {
             let mut service = self.youtrack_service.write().await;
             service.update_status(task_id.clone()).await;
         }

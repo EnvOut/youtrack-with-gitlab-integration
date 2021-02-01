@@ -16,6 +16,7 @@ use crate::service::webhook_service::SimpleWebhookService;
 use crate::service::Service;
 use crate::service::pattern_builder_service::mustache::MustachePatternBuilderService;
 use crate::service::grok_service::GrokService;
+use crate::service::operation_service::OperationService;
 
 const MAX_SIZE: usize = 262_144;
 
@@ -44,7 +45,7 @@ pub async fn merge_request(request: HttpRequest, hook: web::Json<GitlabHookReque
                     let mut hook_service = hook_service.write().await;
                     hook_service.process_note_hook(note_hook).await;
                     HttpResponse::Ok().body("done")
-                },
+                }
                 GitlabHookRequest::Pipeline(_) => HttpResponse::BadRequest().body(r#"Pipeline hook not impelemnted"#),
             }.await
         } else {
@@ -78,10 +79,15 @@ pub async fn server() -> Server {
         crate::service::new_service(service)
     };
 
+    let operationService = {
+        let service = OperationService::new(youtrack_service.clone(), pattern_builder_service.clone(), grok_service.clone());
+        crate::service::new_service(service)
+    };
+
     let webhook_service = {
         let service = SimpleWebhookService::new(
             youtrack_service.clone(), pattern_builder_service.clone(),
-            grok_service.clone(),
+            grok_service.clone(), operationService.clone(),
         );
         crate::service::new_service(service)
     };

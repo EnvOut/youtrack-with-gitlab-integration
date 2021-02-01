@@ -43,3 +43,35 @@ Integration for youtrack with gitlab
         - [ ] set label "Pipeline in progress"
         - [ ] remove label when pipeline will be done
     - [ ] If was added comment to the merge request, then task should be labeled with "review comments"
+- Settings:
+    - Events:
+      - Gitlab:
+        - [ ] on comment (in progress)
+        - on pipeline:
+            - [ ] started
+            - [ ] success
+            - [ ] failed
+        - on merge request:
+            - [ ] created
+            - [ ] updated
+            - [ ] conflict
+            - [ ] merged
+        
+    - Operations:
+        - [X] type
+        - [X] custom-args
+        - [X] args
+        - [X] update
+        - [X] filter
+        - filter args:
+            - [X] equals
+            - [ ] has
+    
+### Unimplemented
+- [ ] find_issues
+
+### Config features:
+- [ ] Make ChangeTasks parser
+- [ ] Make FilterArgsEquals/FilterArgsHas comparable with args
+
+

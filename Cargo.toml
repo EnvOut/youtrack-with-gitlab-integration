@@ -75,6 +75,7 @@ config = "*"
 # serde
 serde = { version = "1.0.117", features = ["derive"] }
 serde_json = "*"
+serde_yaml = "*"
 
 # logging
 log = "^0.4.8"
@@ -101,3 +102,4 @@ indoc = "1.0.3"
 grok = "1.1"
 mustache = "*"
 snafu = "*"
+derive-new = "0.5"

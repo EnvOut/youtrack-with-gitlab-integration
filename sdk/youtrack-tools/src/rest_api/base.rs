@@ -33,12 +33,12 @@ pub mod wrap {
     pub struct ActiveRecordWrap<DTO> {
         pub origin: Arc<DTO>,
         pub inner: Arc<DTO>,
-        pub http_client: HttpClient,
+        pub http_client: Arc<HttpClient>,
         pub project_id: String
     }
 
     impl<DTO> ActiveRecordWrap<DTO> {
-        pub fn new(http_client: HttpClient, origin: DTO, project_id: String) -> Self {
+        pub fn new(http_client: Arc<HttpClient>, origin: DTO, project_id: String) -> Self {
             let origin = Arc::new(origin);
             let inner = origin.clone();
             Self { origin, inner, http_client, project_id }

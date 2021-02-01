@@ -2,6 +2,8 @@
 #[warn(unused_imports)]
 #[macro_use]
 extern crate lazy_static;
+#[macro_use]
+extern crate derive_new;
 
 use log::LevelFilter;
 use env_logger::WriteStyle;

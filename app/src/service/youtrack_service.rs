@@ -10,6 +10,9 @@ use youtrack_tools::rest_api::json_models::issue::field::custom_field::StateIssu
 use youtrack_tools::rest_api::error::{Result as Res, Error};
 use youtrack_tools::rest_api::error::Error as YoutrackError;
 use actix_web::dev::Service;
+use crate::service::definitions::base::{Filters, UpdateDef};
+use youtrack_tools::rest_api::issue::Issue;
+use youtrack_tools::rest_api::issue::search::IssueSearchParam;
 
 pub struct YoutrackService {
     client: Arc<YoutrackClientImpl>
@@ -19,6 +22,10 @@ impl YoutrackService {
     pub fn new(client: YoutrackClientImpl) -> YoutrackService {
         let client = Arc::new(client);
         YoutrackService { client }
+    }
+
+    pub async fn get_client(&self) -> Arc<YoutrackClientImpl> {
+        self.client.clone()
     }
 
     pub async fn update_status(&mut self, task_id: String) {
@@ -70,5 +77,9 @@ impl YoutrackService {
                 }
             }
         };
+    }
+
+    pub async fn find_issues(&self, search_params: Vec<IssueSearchParam>) -> Res<Vec<Box<Issue>>> {
+        self.client.find_issues(search_params).await
     }
 }

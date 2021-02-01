@@ -1,8 +1,8 @@
-use serde::{self, Deserialize};
+use serde::{self, Deserialize, Serialize};
 use crate::models::hooks::base::{LastCommit, Project, Repository, User, Identifier, MilestoneId, AvatarUrl};
 use crate::models::hooks::merge_request::custom::{MergeRequestState, MergeRequestAction};
 
-#[derive(Deserialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Debug, Clone, PartialEq, Serialize)]
 pub struct MRObjectAttributes {
     pub id: Identifier,
     pub target_branch: String,
@@ -30,7 +30,7 @@ pub struct MRObjectAttributes {
     pub merge_when_pipeline_succeeds: Option<bool>,
 }
 
-#[derive(Deserialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Debug, Clone, PartialEq, Serialize)]
 pub struct Label {
     pub id: Identifier,
     pub title: String,
@@ -43,38 +43,38 @@ pub struct Label {
     pub group_id: Identifier,
 }
 
-#[derive(Deserialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Debug, Clone, PartialEq, Serialize)]
 pub struct Changes {
     pub updated_by_id: Option<UpdatedById>,
     pub updated_at: Option<UpdatedAt>,
     pub labels: Option<Labels>,
 }
 
-#[derive(Deserialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Debug, Clone, PartialEq, Serialize)]
 pub struct UpdatedById {
     pub previous: Option<Identifier>,
     pub current: Identifier,
 }
 
-#[derive(Deserialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Debug, Clone, PartialEq, Serialize)]
 pub struct UpdatedAt {
     pub previous: Option<String>,
     pub current: String,
 }
 
-#[derive(Deserialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Debug, Clone, PartialEq, Serialize)]
 pub struct Labels {
     pub previous: Vec<Label>,
     pub current: Vec<Label>,
 }
 
 pub mod custom {
-    use serde::{Deserialize, Deserializer};
+    use serde::{Deserialize, Deserializer, Serialize};
     use serde_json::Value;
     use serde::de::{Error, Unexpected};
     use std::any::Any;
 
-    #[derive(Debug, Clone, PartialEq)]
+    #[derive(Debug, Clone, PartialEq, Serialize)]
     pub enum MergeRequestState {
         Opened,
         Closed,
@@ -109,7 +109,7 @@ pub mod custom {
     }
 
 
-    #[derive(Debug, Clone, PartialEq)]
+    #[derive(Debug, Clone, PartialEq, Serialize)]
     pub enum MergeRequestAction {
         Merge,
         Other(String),
@@ -137,7 +137,7 @@ pub mod custom {
     }
 }
 
-#[derive(Deserialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Debug, Clone, PartialEq, Serialize)]
 pub struct MergeRequestHook {
     pub user: User,
     pub project: Project,

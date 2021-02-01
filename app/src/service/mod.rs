@@ -1,11 +1,13 @@
-use tokio::sync::RwLock;
 use std::sync::Arc;
+
+use tokio::sync::RwLock;
 
 pub mod youtrack_service;
 pub mod webhook_service;
-pub mod gitlab_service;
 pub mod grok_service;
 pub mod pattern_builder_service;
+pub mod definitions;
+pub mod operation_service;
 
 pub type Service<T> = Arc<RwLock<T>>;
 
