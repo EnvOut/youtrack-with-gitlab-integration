@@ -1,0 +1,142 @@
+{
+  "method": "POST",
+  "path": "/",
+  "query": {},
+  "headers": {
+    "x-forwarded-for": "167.99.245.112",
+    "x-forwarded-proto": "https",
+    "x-forwarded-port": "443",
+    "host": "fecda0bb920bb5b77d1d34e59c5d0229.m.pipedream.net",
+    "x-amzn-trace-id": "Root=1-5ffd0481-546da2934ee23b7846ef1511",
+    "content-length": "3415",
+    "content-type": "application/json",
+    "user-agent": "GitLab/13.7.1",
+    "x-gitlab-event": "Merge Request Hook",
+    "x-gitlab-token": "hook_token, https://integration.let4.me/api/hooks"
+  },
+  "bodyRaw": "{\"object_kind\":\"merge_request\",\"event_type\":\"merge_request\",\"user\":{\"name\":\"serge\",\"username\":\"serge\",\"avatar_url\":\"https://secure.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80\\u0026d=identicon\",\"email\":\"admin@example.com\"},\"project\":{\"id\":3,\"name\":\"proj2\",\"description\":\"\",\"web_url\":\"https://git.let4.me/serge/proj2\",\"avatar_url\":null,\"git_ssh_url\":\"git@git.let4.me:serge/proj2.git\",\"git_http_url\":\"https://git.let4.me/serge/proj2.git\",\"namespace\":\"serge\",\"visibility_level\":0,\"path_with_namespace\":\"serge/proj2\",\"default_branch\":\"master\",\"ci_config_path\":null,\"homepage\":\"https://git.let4.me/serge/proj2\",\"url\":\"git@git.let4.me:serge/proj2.git\",\"ssh_url\":\"git@git.let4.me:serge/proj2.git\",\"http_url\":\"https://git.let4.me/serge/proj2.git\"},\"object_attributes\":{\"assignee_id\":1,\"author_id\":1,\"created_at\":\"2021-01-12 02:06:28 UTC\",\"description\":\"\",\"head_pipeline_id\":null,\"id\":2,\"iid\":2,\"last_edited_at\":null,\"last_edited_by_id\":null,\"merge_commit_sha\":\"3ccc77a52397d60edb3d1bf6840e9c1ea950d695\",\"merge_error\":null,\"merge_params\":{\"force_remove_source_branch\":\"1\"},\"merge_status\":\"can_be_merged\",\"merge_user_id\":null,\"merge_when_pipeline_succeeds\":false,\"milestone_id\":null,\"source_branch\":\"7-test\",\"source_project_id\":3,\"state_id\":3,\"target_branch\":\"master\",\"target_project_id\":3,\"time_estimate\":0,\"title\":\"Update README.md\",\"updated_at\":\"2021-01-12 02:07:59 UTC\",\"updated_by_id\":null,\"url\":\"https://git.let4.me/serge/proj2/-/merge_requests/2\",\"source\":{\"id\":3,\"name\":\"proj2\",\"description\":\"\",\"web_url\":\"https://git.let4.me/serge/proj2\",\"avatar_url\":null,\"git_ssh_url\":\"git@git.let4.me:serge/proj2.git\",\"git_http_url\":\"https://git.let4.me/serge/proj2.git\",\"namespace\":\"serge\",\"visibility_level\":0,\"path_with_namespace\":\"serge/proj2\",\"default_branch\":\"master\",\"ci_config_path\":null,\"homepage\":\"https://git.let4.me/serge/proj2\",\"url\":\"git@git.let4.me:serge/proj2.git\",\"ssh_url\":\"git@git.let4.me:serge/proj2.git\",\"http_url\":\"https://git.let4.me/serge/proj2.git\"},\"target\":{\"id\":3,\"name\":\"proj2\",\"description\":\"\",\"web_url\":\"https://git.let4.me/serge/proj2\",\"avatar_url\":null,\"git_ssh_url\":\"git@git.let4.me:serge/proj2.git\",\"git_http_url\":\"https://git.let4.me/serge/proj2.git\",\"namespace\":\"serge\",\"visibility_level\":0,\"path_with_namespace\":\"serge/proj2\",\"default_branch\":\"master\",\"ci_config_path\":null,\"homepage\":\"https://git.let4.me/serge/proj2\",\"url\":\"git@git.let4.me:serge/proj2.git\",\"ssh_url\":\"git@git.let4.me:serge/proj2.git\",\"http_url\":\"https://git.let4.me/serge/proj2.git\"},\"last_commit\":{\"id\":\"5ee677b0ebc82ff3399756caebe8092abf370261\",\"message\":\"Update README.md\",\"title\":\"Update README.md\",\"timestamp\":\"2021-01-12T02:05:46+00:00\",\"url\":\"https://git.let4.me/serge/proj2/-/commit/5ee677b0ebc82ff3399756caebe8092abf370261\",\"author\":{\"name\":\"serge\",\"email\":\"admin@example.com\"}},\"work_in_progress\":false,\"total_time_spent\":0,\"human_total_time_spent\":null,\"human_time_estimate\":null,\"assignee_ids\":[1],\"state\":\"merged\",\"action\":\"merge\"},\"labels\":[],\"changes\":{\"state_id\":{\"previous\":4,\"current\":3},\"updated_at\":{\"previous\":\"2021-01-12 02:07:59 UTC\",\"current\":\"2021-01-12 02:07:59 UTC\"}},\"repository\":{\"name\":\"proj2\",\"url\":\"git@git.let4.me:serge/proj2.git\",\"description\":\"\",\"homepage\":\"https://git.let4.me/serge/proj2\"},\"assignees\":[{\"name\":\"serge\",\"username\":\"serge\",\"avatar_url\":\"https://secure.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80\\u0026d=identicon\",\"email\":\"admin@example.com\"}]}",
+  "body": {
+    "object_kind": "merge_request",
+    "event_type": "merge_request",
+    "user": {
+      "name": "serge",
+      "username": "serge",
+      "avatar_url": "https://secure.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+      "email": "admin@example.com"
+    },
+    "project": {
+      "id": 3,
+      "name": "proj2",
+      "description": "",
+      "web_url": "https://git.let4.me/serge/proj2",
+      "git_ssh_url": "git@git.let4.me:serge/proj2.git",
+      "git_http_url": "https://git.let4.me/serge/proj2.git",
+      "namespace": "serge",
+      "visibility_level": 0,
+      "path_with_namespace": "serge/proj2",
+      "default_branch": "master",
+      "homepage": "https://git.let4.me/serge/proj2",
+      "url": "git@git.let4.me:serge/proj2.git",
+      "ssh_url": "git@git.let4.me:serge/proj2.git",
+      "http_url": "https://git.let4.me/serge/proj2.git"
+    },
+    "object_attributes": {
+      "assignee_id": 1,
+      "author_id": 1,
+      "created_at": "2021-01-12 02:06:28 UTC",
+      "description": "",
+      "id": 2,
+      "iid": 2,
+      "merge_commit_sha": "3ccc77a52397d60edb3d1bf6840e9c1ea950d695",
+      "merge_params": {
+        "force_remove_source_branch": "1"
+      },
+      "merge_status": "can_be_merged",
+      "merge_when_pipeline_succeeds": false,
+      "source_branch": "7-test",
+      "source_project_id": 3,
+      "state_id": 3,
+      "target_branch": "master",
+      "target_project_id": 3,
+      "time_estimate": 0,
+      "title": "Update README.md",
+      "updated_at": "2021-01-12 02:07:59 UTC",
+      "url": "https://git.let4.me/serge/proj2/-/merge_requests/2",
+      "source": {
+        "id": 3,
+        "name": "proj2",
+        "description": "",
+        "web_url": "https://git.let4.me/serge/proj2",
+        "git_ssh_url": "git@git.let4.me:serge/proj2.git",
+        "git_http_url": "https://git.let4.me/serge/proj2.git",
+        "namespace": "serge",
+        "visibility_level": 0,
+        "path_with_namespace": "serge/proj2",
+        "default_branch": "master",
+        "homepage": "https://git.let4.me/serge/proj2",
+        "url": "git@git.let4.me:serge/proj2.git",
+        "ssh_url": "git@git.let4.me:serge/proj2.git",
+        "http_url": "https://git.let4.me/serge/proj2.git"
+      },
+      "target": {
+        "id": 3,
+        "name": "proj2",
+        "description": "",
+        "web_url": "https://git.let4.me/serge/proj2",
+        "git_ssh_url": "git@git.let4.me:serge/proj2.git",
+        "git_http_url": "https://git.let4.me/serge/proj2.git",
+        "namespace": "serge",
+        "visibility_level": 0,
+        "path_with_namespace": "serge/proj2",
+        "default_branch": "master",
+        "homepage": "https://git.let4.me/serge/proj2",
+        "url": "git@git.let4.me:serge/proj2.git",
+        "ssh_url": "git@git.let4.me:serge/proj2.git",
+        "http_url": "https://git.let4.me/serge/proj2.git"
+      },
+      "last_commit": {
+        "id": "5ee677b0ebc82ff3399756caebe8092abf370261",
+        "message": "Update README.md",
+        "title": "Update README.md",
+        "timestamp": "2021-01-12T02:05:46+00:00",
+        "url": "https://git.let4.me/serge/proj2/-/commit/5ee677b0ebc82ff3399756caebe8092abf370261",
+        "author": {
+          "name": "serge",
+          "email": "admin@example.com"
+        }
+      },
+      "work_in_progress": false,
+      "total_time_spent": 0,
+      "assignee_ids": [
+        1
+      ],
+      "state": "merged",
+      "action": "merge"
+    },
+    "labels": [],
+    "changes": {
+      "state_id": {
+        "previous": 4,
+        "current": 3
+      },
+      "updated_at": {
+        "previous": "2021-01-12 02:07:59 UTC",
+        "current": "2021-01-12 02:07:59 UTC"
+      }
+    },
+    "repository": {
+      "name": "proj2",
+      "url": "git@git.let4.me:serge/proj2.git",
+      "description": "",
+      "homepage": "https://git.let4.me/serge/proj2"
+    },
+    "assignees": [
+      {
+        "name": "serge",
+        "username": "serge",
+        "avatar_url": "https://secure.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+        "email": "admin@example.com"
+      }
+    ]
+  }
+}

@@ -1,5 +1,6 @@
 pub mod issue;
 pub mod user;
+pub mod project;
 
 mod active_exp {
     use std::ops::{Deref, DerefMut};

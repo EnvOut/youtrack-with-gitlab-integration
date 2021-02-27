@@ -1,0 +1,1281 @@
+{
+  "$type": "IssueTag",
+  "color": {
+    "id": "13"
+  },
+  "isUpdatable": true,
+  "isShareable": true,
+  "name": "new tag",
+  "owner": {
+    "$type": "User",
+    "id": "1-1",
+    "guest": false,
+    "ringId": "7f35d5cf-5e72-4843-b33e-0a3688f2ea8e",
+    "login": "sege",
+    "name": "Serge",
+    "fullName": "Serge",
+    "profiles": {
+      "$type": "UserProfiles",
+      "general": {
+        "suggestBatchSilentApply": true,
+        "trackOnlineStatus": true,
+        "useMarkdown": true,
+        "dateFieldFormat": {
+          "dateNoYearPattern": "d MMM",
+          "monthPattern": "MMM yyyy",
+          "dayPattern": "d",
+          "presentation": "Default date format (31 Dec 2000 23:59)",
+          "pattern": "d MMM yyyy HH:mm",
+          "datePattern": "d MMM yyyy",
+          "id": "",
+          "$type": "DateFormatDescriptor"
+        },
+        "searchContext": null,
+        "star": {
+          "id": "6-2",
+          "$type": "IssueTag"
+        },
+        "locale": {
+          "name": "English",
+          "community": false,
+          "locale": "en_US",
+          "id": "en_US",
+          "language": "en",
+          "$type": "LocaleDescriptor"
+        },
+        "timezone": {
+          "dstHistory": {
+            "untils": [
+              null
+            ],
+            "offsets": [
+              0
+            ],
+            "$type": "DstHistory"
+          },
+          "presentation": "Coordinated Universal Time (UTC/GMT 0 hours)",
+          "id": "Etc/UTC",
+          "$type": "TimeZoneDescriptor"
+        },
+        "id": "generalProfile",
+        "$type": "GeneralUserProfile"
+      },
+      "appearance": {
+        "exceptionsExpanded": true,
+        "showPropertiesOnTheLeft": false,
+        "showSimilarIssues": true,
+        "naturalCommentsOrder": true,
+        "showLinksUnderDescription": true,
+        "expandChangesInActivityStream": false,
+        "uiTheme": "default",
+        "linksPanelExpanded": true,
+        "useAbsoluteDates": false,
+        "showTooltips": false,
+        "useSimplifiedUI": false,
+        "uiPickerSeen": true,
+        "firstDayOfWeek": 0,
+        "$type": "AppearanceUserProfile"
+      },
+      "issuesList": {
+        "showSidebar": true,
+        "issueListView": {
+          "treeView": false,
+          "detailLevel": 20,
+          "$type": "IssueListView"
+        },
+        "visibleFields": [
+          {
+            "projects": [
+              {
+                "name": "Demo project",
+                "id": "0-0",
+                "$type": "Project"
+              },
+              {
+                "name": "Simple Project",
+                "id": "0-1",
+                "$type": "Project"
+              },
+              {
+                "name": "Simple Scrum Project",
+                "id": "0-2",
+                "$type": "Project"
+              }
+            ],
+            "customField": {
+              "fieldType": {
+                "valueType": "enum",
+                "$type": "FieldType"
+              },
+              "id": "92-0",
+              "$type": "CustomField"
+            },
+            "id": "92-0",
+            "name": "Priority",
+            "$type": "CustomFilterField"
+          },
+          {
+            "projects": [
+              {
+                "name": "Demo project",
+                "id": "0-0",
+                "$type": "Project"
+              },
+              {
+                "name": "Simple Project",
+                "id": "0-1",
+                "$type": "Project"
+              },
+              {
+                "name": "Simple Scrum Project",
+                "id": "0-2",
+                "$type": "Project"
+              }
+            ],
+            "customField": {
+              "fieldType": {
+                "valueType": "enum",
+                "$type": "FieldType"
+              },
+              "id": "92-1",
+              "$type": "CustomField"
+            },
+            "id": "92-1",
+            "name": "Type",
+            "$type": "CustomFilterField"
+          },
+          {
+            "projects": [
+              {
+                "name": "Demo project",
+                "id": "0-0",
+                "$type": "Project"
+              },
+              {
+                "name": "Simple Project",
+                "id": "0-1",
+                "$type": "Project"
+              },
+              {
+                "name": "Simple Scrum Project",
+                "id": "0-2",
+                "$type": "Project"
+              }
+            ],
+            "customField": {
+              "fieldType": {
+                "valueType": "state",
+                "$type": "FieldType"
+              },
+              "id": "92-2",
+              "$type": "CustomField"
+            },
+            "id": "92-2",
+            "name": "State",
+            "$type": "CustomFilterField"
+          },
+          {
+            "projects": [
+              {
+                "name": "Demo project",
+                "id": "0-0",
+                "$type": "Project"
+              },
+              {
+                "name": "Simple Project",
+                "id": "0-1",
+                "$type": "Project"
+              },
+              {
+                "name": "Simple Scrum Project",
+                "id": "0-2",
+                "$type": "Project"
+              }
+            ],
+            "customField": {
+              "fieldType": {
+                "valueType": "user",
+                "$type": "FieldType"
+              },
+              "id": "92-3",
+              "$type": "CustomField"
+            },
+            "id": "92-3",
+            "name": "Assignee",
+            "$type": "CustomFilterField"
+          },
+          {
+            "projects": [
+              {
+                "name": "Demo project",
+                "id": "0-0",
+                "$type": "Project"
+              },
+              {
+                "name": "Simple Project",
+                "id": "0-1",
+                "$type": "Project"
+              }
+            ],
+            "customField": {
+              "fieldType": {
+                "valueType": "ownedField",
+                "$type": "FieldType"
+              },
+              "id": "92-4",
+              "$type": "CustomField"
+            },
+            "id": "92-4",
+            "name": "Subsystem",
+            "$type": "CustomFilterField"
+          },
+          {
+            "projects": [
+              {
+                "name": "Demo project",
+                "id": "0-0",
+                "$type": "Project"
+              },
+              {
+                "name": "Simple Project",
+                "id": "0-1",
+                "$type": "Project"
+              }
+            ],
+            "customField": {
+              "fieldType": {
+                "valueType": "version",
+                "$type": "FieldType"
+              },
+              "id": "92-5",
+              "$type": "CustomField"
+            },
+            "id": "92-5",
+            "name": "Fix versions",
+            "$type": "CustomFilterField"
+          },
+          {
+            "projects": [
+              {
+                "name": "Demo project",
+                "id": "0-0",
+                "$type": "Project"
+              },
+              {
+                "name": "Simple Project",
+                "id": "0-1",
+                "$type": "Project"
+              }
+            ],
+            "customField": {
+              "fieldType": {
+                "valueType": "version",
+                "$type": "FieldType"
+              },
+              "id": "92-6",
+              "$type": "CustomField"
+            },
+            "id": "92-6",
+            "name": "Affected versions",
+            "$type": "CustomFilterField"
+          },
+          {
+            "projects": [],
+            "customField": {
+              "fieldType": {
+                "valueType": "date",
+                "$type": "FieldType"
+              },
+              "id": "92-8",
+              "$type": "CustomField"
+            },
+            "id": "92-8",
+            "name": "Due Date",
+            "$type": "CustomFilterField"
+          },
+          {
+            "projects": [
+              {
+                "name": "Demo project",
+                "id": "0-0",
+                "$type": "Project"
+              }
+            ],
+            "customField": {
+              "fieldType": {
+                "valueType": "period",
+                "$type": "FieldType"
+              },
+              "id": "92-9",
+              "$type": "CustomField"
+            },
+            "id": "92-9",
+            "name": "Estimation",
+            "$type": "CustomFilterField"
+          },
+          {
+            "projects": [
+              {
+                "name": "Demo project",
+                "id": "0-0",
+                "$type": "Project"
+              }
+            ],
+            "customField": {
+              "fieldType": {
+                "valueType": "period",
+                "$type": "FieldType"
+              },
+              "id": "92-10",
+              "$type": "CustomField"
+            },
+            "id": "92-10",
+            "name": "Spent time",
+            "$type": "CustomFilterField"
+          },
+          {
+            "projects": [
+              {
+                "name": "Simple Scrum Project",
+                "id": "0-2",
+                "$type": "Project"
+              }
+            ],
+            "customField": {
+              "fieldType": {
+                "valueType": "version",
+                "$type": "FieldType"
+              },
+              "id": "92-11",
+              "$type": "CustomField"
+            },
+            "id": "92-11",
+            "name": "Sprints",
+            "$type": "CustomFilterField"
+          },
+          {
+            "projects": [
+              {
+                "name": "Simple Scrum Project",
+                "id": "0-2",
+                "$type": "Project"
+              }
+            ],
+            "customField": {
+              "fieldType": {
+                "valueType": "integer",
+                "$type": "FieldType"
+              },
+              "id": "92-12",
+              "$type": "CustomField"
+            },
+            "id": "92-12",
+            "name": "Ideal days",
+            "$type": "CustomFilterField"
+          },
+          {
+            "projects": [
+              {
+                "name": "Simple Scrum Project",
+                "id": "0-2",
+                "$type": "Project"
+              }
+            ],
+            "customField": {
+              "fieldType": {
+                "valueType": "integer",
+                "$type": "FieldType"
+              },
+              "id": "92-13",
+              "$type": "CustomField"
+            },
+            "id": "92-13",
+            "name": "Original estimation",
+            "$type": "CustomFilterField"
+          },
+          {
+            "projects": [
+              {
+                "name": "Simple Scrum Project",
+                "id": "0-2",
+                "$type": "Project"
+              }
+            ],
+            "customField": {
+              "fieldType": {
+                "valueType": "integer",
+                "$type": "FieldType"
+              },
+              "id": "92-14",
+              "$type": "CustomField"
+            },
+            "id": "92-14",
+            "name": "Story points",
+            "$type": "CustomFilterField"
+          }
+        ],
+        "sortTextByRelevance": false,
+        "tagsExpanded": false,
+        "unresolvedIssuesOnly": false,
+        "projectsExpanded": false,
+        "savedSearchesExpanded": false,
+        "$type": "IssuesListUserProfile"
+      },
+      "teamcity": {
+        "fixInBuildNotificationsEnabled": false,
+        "isCCCNotificationsEnabled": false,
+        "$type": "TeamcityUserProfile"
+      },
+      "notifications": {
+        "notifyOnOwnChanges": false,
+        "jabberNotificationsEnabled": true,
+        "emailNotificationsEnabled": true,
+        "inboxNotificationsEnabled": true,
+        "mentionNotificationsEnabled": true,
+        "duplicateClusterNotificationsEnabled": false,
+        "mailboxIntegrationNotificationsEnabled": true,
+        "usePlainTextEmails": false,
+        "autoWatchOnComment": true,
+        "autoWatchOnVote": true,
+        "autoWatchOnUpdate": false,
+        "mutedThreads": [],
+        "emailBlocked": false,
+        "emailBlockReason": null,
+        "lastOpenedReactionsFeed": 0,
+        "$type": "NotificationsUserProfile"
+      },
+      "timetracking": {
+        "periodFieldPattern": "((\\d+w\\s*)?(\\s*)?(\\d+d\\s*)?(\\s*)?(\\d+h\\s*)?(\\s*)?(\\d+m\\s*)?|\\d+)",
+        "periodFormat": {
+          "id": "FULL",
+          "$type": "PeriodFieldFormat"
+        },
+        "$type": "TimeTrackingUserProfile"
+      }
+    },
+    "userPermissions": {
+      "_permissions": [
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.organization-read"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.organization-create"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.organization-update"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.organization-delete"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.project-create"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.project-read-basic"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.project-read"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.project-update"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.projectrole-create"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.projectrole-delete"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.project-delete"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.role-create"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.role-read"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.role-update"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.role-delete"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.profile-readSelf"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.profile-updateSelf"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.user-create"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.user-read-basic"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.user-read"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.user-update"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.user-delete"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.group-create"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.group-read"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.group-update"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.group-delete"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.service-create"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.service-read"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.service-update"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.service-delete"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.low-level-read"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.authProvider-read"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.low-level"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.authProvider-create"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.authProvider-update"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "jetbrains.jetpass.authProvider-delete"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.UPDATE_ISSUE"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.DELETE_ISSUE"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.LINK_ISSUE"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.CREATE_ATTACHMENT_ISSUE"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.UPDATE_ATTACHMENT_ISSUE"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.DELETE_ATTACHMENT_ISSUE"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.APPLY_COMMANDS_SILENTLY"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.CREATE_COMMENT"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.READ_COMMENT"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.UPDATE_COMMENT"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.DELETE_COMMENT"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.CREATE_WATCH_FOLDER"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.UPDATE_WATCH_FOLDER"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.DELETE_WATCH_FOLDER"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.SHARE_WATCH_FOLDER"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.UPDATE_WATCHERS"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.READ_WORK_ITEM"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.UPDATE_WORK_ITEM"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.CREATE_WORK_ITEM"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.READ_REPORT"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.READ_ARTICLE"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.READ_ISSUE"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.PRIVATE_READ_ISSUE"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.CREATE_ISSUE"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.UPDATE_NOT_OWN_COMMENT"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.DELETE_NOT_OWN_COMMENT"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.VIEW_WATCHERS"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.VIEW_VOTERS"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.UPDATE_NOT_OWN_WORK_ITEM"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.CREATE_NOT_OWN_WORK_ITEM"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.CREATE_REPORT"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.SHARE_REPORT"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.CREATE_ARTICLE"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.UPDATE_ARTICLE"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.DELETE_ARTICLE"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.READ_ARTICLE_COMMENT"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.PRIVATE_UPDATE_ISSUE"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.READ_HIDDEN_STUFF"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.CREATE_ARTICLE_COMMENT"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.UPDATE_ARTICLE_COMMENT"
+          },
+          "global": true
+        },
+        {
+          "permission": {
+            "key": "JetBrains.YouTrack.DELETE_ARTICLE_COMMENT"
+          },
+          "global": true
+        }
+      ],
+      "permissionCache": {
+        "hub.organization-read": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "hub.organization-create": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "hub.organization-update": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "hub.organization-delete": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "hub.project-create": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "hub.project-read-basic": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "hub.project-read": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "hub.project-update": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "jetbrains.jetpass.projectrole-create": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "jetbrains.jetpass.projectrole-delete": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "hub.project-delete": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "hub.role-create": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "hub.role-read": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "hub.role-update": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "hub.role-delete": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "hub.profile-readSelf": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "hub.profile-updateSelf": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "hub.user-create": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "jetbrains.jetpass.user-read-basic": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "hub.user-read": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "hub.user-update": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "hub.user-delete": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "hub.group-create": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "hub.group-read": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "hub.group-update": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "hub.group-delete": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "hub.service-create": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "hub.service-read": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "hub.service-update": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "hub.service-delete": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "hub.low-level-read": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "jetbrains.jetpass.authProvider-read": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "hub.low-level": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "jetbrains.jetpass.authProvider-create": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "jetbrains.jetpass.authProvider-update": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "jetbrains.jetpass.authProvider-delete": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.issue-update": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.issue-delete": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.issue-link": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.issue-create-attachment": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.issue-update-attachment": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.issue-delete-attachment": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.silent-apply": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.comment-create": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.comment-read": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.comment-update": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.comment-delete": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.watch-folder-create": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.watch-folder-update": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.watch-folder-delete": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.watch-folder-share": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.watchers-update": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.work-items-read": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.work-items-update": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.work-items-create": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.report-read": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.read-article": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.issue-read": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.issue-private-read": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.issue-create": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.not-own-comment-update": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.not-own-comment-delete": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.watchers-view": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.voters-view": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.not-own-work-items-update": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.not-own-work-items-create": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.report-create": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.report-share": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "JetBrains.YouTrack.CREATE_ARTICLE": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "JetBrains.YouTrack.UPDATE_ARTICLE": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "JetBrains.YouTrack.DELETE_ARTICLE": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "JetBrains.YouTrack.READ_ARTICLE_COMMENT": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "yt.issue-private-update": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "JetBrains.YouTrack.READ_HIDDEN_STUFF": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "JetBrains.YouTrack.CREATE_ARTICLE_COMMENT": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "JetBrains.YouTrack.UPDATE_ARTICLE_COMMENT": {
+          "global": true,
+          "projectIdSet": null
+        },
+        "JetBrains.YouTrack.DELETE_ARTICLE_COMMENT": {
+          "global": true,
+          "projectIdSet": null
+        }
+      }
+    },
+    "email": "martin10@bk.ru",
+    "avatar": {
+      "type": "defaultavatar",
+      "url": "http://localhost:10100/hub/api/rest/avatar/7f35d5cf-5e72-4843-b33e-0a3688f2ea8e"
+    }
+  },
+  "readSharingSettings": {
+    "permittedGroups": [
+      {
+        "ringId": "6c60bae8-a742-4df1-8d0a-11868096907b",
+        "allUsersGroup": true,
+        "icon": null,
+        "name": "All Users",
+        "id": "3-0",
+        "$type": "UserGroup"
+      }
+    ],
+    "permittedUsers": [],
+    "projectBased": false
+  },
+  "tagSharingSettings": {
+    "permittedGroups": [
+      {
+        "ringId": "6c60bae8-a742-4df1-8d0a-11868096907b",
+        "allUsersGroup": true,
+        "icon": null,
+        "name": "All Users",
+        "id": "3-0",
+        "$type": "UserGroup"
+      }
+    ],
+    "permittedUsers": [],
+    "projectBased": false,
+    "permissionBasedTagAccess": false
+  },
+  "updateSharingSettings": {
+    "permittedGroups": [
+      {
+        "ringId": "6c60bae8-a742-4df1-8d0a-11868096907b",
+        "allUsersGroup": true,
+        "icon": null,
+        "name": "All Users",
+        "id": "3-0",
+        "$type": "UserGroup"
+      }
+    ],
+    "permittedUsers": [],
+    "projectBased": false
+  }
+}

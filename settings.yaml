@@ -1,6 +1,119 @@
+app:
+  port: 8081
+  grok:
+    patterns:
+      TASK_ID: "[\\w\\d-]+"
+      TASK_TITLE: ".+"
+  events:
+    gitlab:
+      on-comment: set-lable-commented
+      on-pipeline:
+        started: set-tag-dev-started
+        success:
+          - set-tag-dev-success
+          - set-tag-dev-success2
+        failed: set-tag-dev-success
+      on-merge-request:
+        created: set-tag-dev-started
+        updated: set-tag-dev-started
+        conflict: set-tag-dev-started
+        merged: set-tag-dev-success
+
 youtrack:
   url: "http://localhost:10100"
-  token: "perm:c2VnZQ==.NDUtMA==.PNyYK9i6rvgQ3fr3SK5Dcqjzn5j5Wn"
+  token: "perm:c2VnZQ==.NDUtMA==.BwWbdAkDk6Dr6rKnoVD3Rg5PStkMFE"
+  project_id: "0-2"
+
 gitlab:
-  url:
-  token:
+  url: "https://git.let4.me"
+  token: "secret_token"
+  merge-request:
+    title-pattern: "%{TASK_ID} %{TASK_TITLE}"
+    youtrack-task-id-builder: "SSP-{{TASK_ID}}"
+
+tags:
+  on-comment-default: "default comment style"
+  on-comment-green:
+    title: "green tag"
+    style: 10
+  on-dev-start:
+    title: "added to the dev build"
+    style: 10
+
+operations:
+  set-lable-commented2:
+    type: ChangeTasks
+    args:
+      task_id: "1-3"
+      project_name: "Paymash Server"
+    update:
+      title: "Changed title for {{project_id}}"
+      add-tag: on-comment-default
+
+  set-lable-commented:
+    type: ChangeTasks
+    args: CommentHookArgs
+    update:
+      add-tag: on-comment-green
+    filter:
+      state: "Wait for merge"
+
+  set-tag-dev-started:
+    type: ChangeTasks
+    args: CommentHookArgs
+    update:
+      add-tag: on-comment-green
+    filter:
+      state: "Wait for merge"
+      id: "{{TASK_ID}}"
+
+  set-tag-dev-success:
+    type: ChangeTasks
+    custom-args:
+      Arg1: value1
+      Arg2: value2
+    args: CommentHookArgs
+    update:
+      status: "Ready for testing"
+    filter:
+      tag: on-comment-green
+      state: "Fixed"
+
+  set-tag-dev-success2:
+    type: ChangeTasks
+    custom-args:
+      Arg1: value1
+      Arg2: value2
+    args: CommentHookArgs
+    update:
+      status: "Ready for testing"
+    filter:
+      tag: on-comment-green
+      state: "Fixed"
+
+  merge-request-impl:
+    type: ChangeTasks
+    name: "Change task status on merge request"
+    custom-args:
+      Arg1: value1
+      Arg2: value2
+      "Arg3": value3
+      arg4:
+        name: "arg4 name"
+        age: 18
+    args: CommentHookArgs
+    update:
+      status: "Ready for testing"
+    filter:
+      id: "11-1"
+      state: "Fixed"
+      project_name: "Paymash Server"
+      tag: on-comment-green
+    filter_args:
+      equals:
+        object_attributes:
+          action: "merge"
+      has:
+        object_attributes:
+          - title
+          - state

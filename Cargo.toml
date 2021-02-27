@@ -58,6 +58,8 @@ members = [
     "sdk/gitlab-tools",
     "sdk/youtrack-tools",
     "sdk/utils/git-utils",
+    "sdk/utils/env-utils",
+    "sdk/utils/web-utils",
 ]
 
 
@@ -65,6 +67,7 @@ members = [
 git-tools = { path = "./sdk/git-tools" }
 gitlab-tools = { path = "./sdk/gitlab-tools" }
 youtrack-tools = { path = "./sdk/youtrack-tools" }
+web-utils = { path = "./sdk/utils/web-utils" }
 
 lazy_static = "*"
 config = "*"
@@ -72,16 +75,19 @@ config = "*"
 # serde
 serde = { version = "1.0.117", features = ["derive"] }
 serde_json = "*"
+serde_yaml = "*"
 
 # logging
 log = "^0.4.8"
 env_logger = "0.8"
 
-# tokio + futures
+# tokio + futures + web
 futures = "*"
 tokio = { version = "0.2.23", features = ["full"] }
 tokio-util = { version = "*", features = ["full"] }
+actix-web = "3.3.2"
 #tokio-util = { version = "*", features = ["full"] }
+
 
 # Types
 chrono = { version = "0.4", features = ["serde"] }
@@ -93,5 +99,7 @@ qstring = "0.7.2"
 
 # etc
 indoc = "1.0.3"
-
-
+grok = "1.1"
+mustache = "*"
+snafu = "*"
+derive-new = "0.5"

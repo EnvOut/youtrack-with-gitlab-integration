@@ -1,6 +1,8 @@
 use serde::{Serialize, Deserialize};
-use crate::rest_api::json_models::issue::field::{ProjectCustomFieldType, ProjectCustomField};
+use crate::rest_api::json_models::issue::field::{ProjectCustomFieldType, ProjectCustomField, FieldColor};
 use crate::rest_api::json_models::issue::field::custom_field::{IssueCustomField, StateIssueCustomField};
+use crate::rest_api::json_models::issue::field::value::User;
+use crate::rest_api::json_models::project::ProjectDto;
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
@@ -23,10 +25,10 @@ pub struct IssueDto {
     pub is_draft: bool,
     // visibility
     pub description: Option<String>,
-    // tags
+    pub tags: Option<Vec<IssueTagDto>>,
     // created
     // links
-    // project
+    pub project: ProjectDto,
     pub uses_markdown: bool,
     // updated
     // watchers
@@ -86,9 +88,11 @@ pub mod tests {
 }
 
 pub mod field {
-    use serde::{Serialize, Deserialize};
+    use serde::{Serialize, Deserialize, Deserializer, Serializer};
     use crate::rest_api::json_models::issue::field::custom_field::IssueCustomField::StateIssueCustomField;
     use crate::rest_api::json_models::issue::field::custom_field::IssueCustomField;
+    use serde_json::Value;
+    use serde::de::{Error, Unexpected};
 
     #[derive(Serialize, Deserialize, Debug, Clone)]
     #[serde(rename_all = "camelCase")]
@@ -228,7 +232,7 @@ pub mod field {
     }
 
     pub mod value {
-        use crate::rest_api::json_models::issue::field::FieldColor;
+        use crate::rest_api::json_models::issue::field::{FieldColor, IssueStateType};
         use serde::{Serialize, Deserialize};
         use serde;
 
@@ -249,7 +253,7 @@ pub mod field {
             pub localized_name: Option<String>,
             pub archived: bool,
             pub color: Option<FieldColor>,
-            pub name: Option<String>,
+            pub name: Option<IssueStateType>,
             pub id: String,
             pub ordinal: Option<u8>,
         }
@@ -263,7 +267,6 @@ pub mod field {
             full_name: Option<String>,
             name: Option<String>,
             id: Option<String>,
-
         }
 
         #[serde(rename_all = "camelCase")]
@@ -294,7 +297,7 @@ pub mod field {
 
     pub mod custom_field {
         use serde::{Serialize, Deserialize};
-        use crate::rest_api::json_models::issue::field::{ProjectCustomField};
+        use crate::rest_api::json_models::issue::field::{ProjectCustomField, IssueStateType};
         use crate::rest_api::json_models::issue::field::value::{FieldValue, StateBundleElement};
 
         #[serde(rename_all = "camelCase")]
@@ -364,7 +367,7 @@ pub mod field {
                 }.unwrap()
             }
 
-            pub fn state_name(&self) -> String {
+            pub fn state_name(&self) -> IssueStateType {
                 match &self.value {
                     FieldValue::StateBundleElement(StateBundleElement {
                                                        id: state_id,
@@ -394,7 +397,7 @@ pub mod field {
         pub type IssueStatus = IssueCustomField;
     }
 
-    #[derive(Clone, Debug)]
+    #[derive(Clone, Debug, Eq, PartialEq)]
     pub enum IssueStateType {
         Submitted,
         Open,
@@ -415,8 +418,8 @@ pub mod field {
     }
 
     impl IssueStateType {
-        pub fn new(state_name: &String) -> Self {
-            match state_name.clone().to_lowercase().as_str() {
+        pub fn new(state_name: &str) -> Self {
+            match state_name.to_lowercase().as_str() {
                 "submitted" => IssueStateType::Submitted,
                 "open" => IssueStateType::Open,
                 "in progress" => IssueStateType::InProgress,
@@ -434,6 +437,31 @@ pub mod field {
                 "to verify" => IssueStateType::ToVerify,
                 other => IssueStateType::Other(other.to_string())
             }
+        }
+    }
+
+    impl Serialize for IssueStateType {
+        fn serialize<S>(&self, serializer: S) -> Result<<S as Serializer>::Ok, <S as Serializer>::Error> where S: Serializer {
+            let text_value: String = Into::into(self.clone());
+            serializer.serialize_str(text_value.as_str())
+        }
+    }
+
+    impl<'de> Deserialize<'de> for IssueStateType {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error> where D: Deserializer<'de>, {
+            let value = <Value as Deserialize>::deserialize(deserializer)?;
+
+            let result = value.as_str().ok_or({
+                D::Error::invalid_value(
+                    Unexpected::Seq, &format!("Wrong state type: {:?}", &value).as_str())
+            }).map(|value| IssueStateType::new(value))
+                .map_err(|err| {
+                    D::Error::invalid_value(
+                        Unexpected::Other("web hook"),
+                        &format!("{:?}", err).as_str(),
+                    )
+                });
+            result
         }
     }
 
@@ -458,5 +486,71 @@ pub mod field {
                 IssueStateType::Other(value) => value.clone(),
             }
         }
+    }
+}
+
+#[serde(rename_all = "camelCase")]
+#[derive(Debug, Clone, Serialize, Deserialize, Default)]
+pub struct IssueTagDto {
+    pub is_usable: Option<bool>,
+    pub color: Option<FieldColor>,
+    // owner:
+    pub query: Option<String>,
+    pub is_updatable: Option<bool>,
+    pub is_shareable: Option<bool>,
+    pub name: String,
+    pub id: Option<String>,
+    #[serde(alias = "$type")]
+    #[serde(rename = "$type")]
+    pub model_type: String,
+}
+
+impl IssueTagDto {
+    pub fn new(name: String, style: String) -> IssueTagDto {
+        let color = Some(style).map(|style_id| FieldColor::FieldStyle { id: style_id });
+        let model_type = "IssueTag".to_string();
+        IssueTagDto { name, color, model_type, ..IssueTagDto::default() }
+    }
+}
+
+#[deprecated(note = "use issue::IssueTagDto")]
+pub mod tag {
+    use crate::rest_api::json_models::issue::field::value::User;
+    use crate::rest_api::json_models::issue::field::FieldColor;
+    use serde::{Serialize, Deserialize};
+
+    #[serde(rename_all = "camelCase")]
+    #[derive(Debug, Clone, Serialize, Deserialize)]
+    pub struct Root {
+        pub tag_sharing_settings: Option<TagSharingSettings>,
+        pub untag_on_resolve: Option<bool>,
+        pub is_usable: bool,
+        pub color: FieldColor,
+        pub owner: Option<User>,
+        pub query: String,
+        pub is_updatable: bool,
+        pub is_deletable: Option<bool>,
+        pub is_shareable: Option<bool>,
+        pub read_sharing_settings: Option<TagSharingSettings>,
+        pub update_sharing_settings: Option<TagSharingSettings>,
+        pub issues_url: Option<String>,
+        pub pinned: Option<bool>,
+        pub name: String,
+        pub id: String,
+    }
+
+    #[serde(rename_all = "camelCase")]
+    #[derive(Debug, Clone, Serialize, Deserialize)]
+    pub struct TagSharingSettings {
+        pub permission_based_tag_access: bool,
+        pub permitted_groups: Vec<::serde_json::Value>,
+        pub permitted_users: Vec<::serde_json::Value>,
+    }
+
+    #[serde(rename_all = "camelCase")]
+    #[derive(Debug, Clone, Serialize, Deserialize)]
+    pub struct WatchFolderSharingSettings {
+        pub permitted_groups: Vec<::serde_json::Value>,
+        pub permitted_users: Vec<::serde_json::Value>,
     }
 }
